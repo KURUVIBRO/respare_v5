@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+
+
+    {% load static %}
+    <script type='text/javascript' src="{% static 'script.js' %}"></script>
+
+
+    
+</head>
+
+<body>
+
+    <div class="nav">
+        <a class="logo" href="#home">RESPARE</a>
+        <div class="categories">
+            <a href="categories">Categories</a>
+            <a href="about">About</a>
+            <a class="login" href="signin/">Login</a>
+            <div class="rs"></div>
+            <input type="text" class="searchbox" placeholder="Search...">
+        </div>
+    </div>
+    </div>
+    <div class="img-slider">
+        <button class="prev-btn"><img src="images/pre.png" alt=""></button>
+        <button class="next-btn"><img src="{% static 'images/nxt.png' %}" alt=""></button>
+        
+        {% for s in slide %}
+            {% if s == slide.0 %}
+                <div class="slide active">
+                    <img src="https://picsum.photos/800/400?random={{ s.id }}" alt="">
+                    <div class="info">
+                        <h2>{{ s.title }}</h2>
+                        <p>{{ s.description }}</p>
+                    </div>
+                </div>
+                
+            {% else %}
+            <div class="slide">
+                <img src="https://picsum.photos/800/400?random={{ s.id }}" alt="">
+                <div class="info">
+                    <h2>{{ s.title }}</h2>
+                     <p>{{ s.description }}</p>
+                 </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+        <div class="navigation">
+            <div class="btn active"></div>
+            <div class="btn"></div>
+            <div class="btn"></div>
+            <div class="btn"></div>
+            <div class="btn"></div>
+        </div>
+    </div>
+
+
+    <h1 class="title">Recommended for you</h1>
+    <div class="topic-list">
+        <button class="pre-btn"><img src="images/pre.png" alt=""></button>
+        <button class="nxt-btn"><img src="{% static 'images/nxt.png' %}" alt=""></button>
+
+
+        <div class="card-container">
+            {% for r in recommended %}
+            <div class="card">
+               <img src="{{ r.image }}"" class="card-img" alt="">
+                <div class="card-body">
+                    <h2 class="name">{{ r.title }}</h2>
+                    <h6 class="des">{{ r.description }}</h6>
+                    <a type='button' href="/topic/{{ r.id }}" class="readmore-btn">read more</a>
+                </div>
+            </div>
+            {% endfor %}
+
+           
+        </div>
+    </div>
+    </div>
+
+
+    <h1 class="title">Trending</h1>
+    <div class="topic-list">
+        <button class="pre-btn"><img src="images/pre.png" alt=""></button>
+        <button class="nxt-btn"><img src="{% static 'images/nxt.png' %}" alt=""></button>
+
+
+        <div class="card-container">
+            {% for t in trending %}
+            <div class="card">
+                <img src="https://picsum.photos/200/300?random={{ t.id }}" class="card-img" alt="">
+                <div class="card-body">
+                    <h2 class="name">{{ t.title }}</h2>
+                    <h6 class="des">{{ t.description }}</h6>
+                    <a type='button' href="/topic/{{ t.id }}" class="readmore-btn">read more</a>
+                </div>
+            </div>
+            {% endfor %}
+
+           
+        </div>
+    </div>
+    </div>
+
+    
+    
+    {% load static %}
+    <script type='text/javascript' src="{% static 'app.js' %}"></script>
+
+
+</body>
+
+</html>

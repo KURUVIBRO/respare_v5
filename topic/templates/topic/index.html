@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+    {{ name }}
+    <ul>
+    {% for topic in topics %}
+        <li>
+            {{  topic.id }} &nbsp {{ topic.title }}
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

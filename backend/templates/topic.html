@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic description</title>
+    {% load static %}<link rel="stylesheet" href="{% static 'topic.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    {% load mathfilters %}
+    <div class="nav">
+        <a class="logo" href="#home">RESPARE</a>
+        <div class="categories">
+            <a href="categories">Categories</a>
+            <a href="about">About</a>
+            <a class="login" href="accounts/login.html">Login</a>
+            <div class="rs"></div>
+            <input type="text" class="searchbox" placeholder="Search...">
+        </div>
+    </div>
+    </div>
+
+    <div class="topic-container">
+        <div class="topic-title">
+            <h1>{{ topic.title }}</h1>
+        </div>
+
+        <img src="{{topic.wide_image}}" alt="">
+        <form action="" method="post">
+        <div class="row">
+            <input type="button" value="Your Opinion">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div id="result" class="topic-statistics">
+                    <ul>
+                     {% for reaction in reactions %}
+                      <li>
+                         <div class="row1">
+                             <h2>{{ reaction.option }}</h2>
+                             {% csrf_token %}
+                             <input onclick="f({{reaction.id}})" type="button" name="select" value="{{ reaction.id }}">
+                             <div class="level">
+                                 <div id="{{reaction.id}}" class="st agreed"></div>
+                             </div>
+                         </div>
+                     </li>
+                    {% endfor %}
+                  </ul>
+               </div>
+            </form>
+
+            {%for m in messages%}
+            <h3>{{m}}</h3>
+            {%endfor%}
+                <div class="row2">
+                    <h2>Disagree</h2>
+                    <div class="level">
+                        <div class="st disagreed">20%</div>
+                    </div>
+                </div>
+            </form>
+             </div>
+            
+        </div>
+    
+        <div class="topic-des">
+            <p>{{ topic.description }}</p>
+        </div>
+        <div class="topic-cmt">
+
+
+        </div>
+
+
+
+
+
+
+    </div>
+       
+
+<script type="text/javascript">
+    function check(){
+    fetch('reactstatus/',{
+        method:'POST',
+        headers:{
+            'X-CSRFToken': jQuery("input[name=csrfmiddlewaretoken]").val(),
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify({
+            id:0
+        })
+    }
+    ).then(response=>{return response.json()})
+    .then(data=>{
+    if (data!="0"){
+            let sum=0;
+            data.forEach((u)=>{
+                sum+=u.count;
+            })
+            console.log("Sum="+sum);
+            let e;
+            let percent=100/sum;
+            data.forEach((u)=>{
+                e=document.getElementById(u.id);
+                e.innerHTML=u.count*percent+"%";
+            })
+        }
+    
+        }
+    )
+    }
+    check();
+    
+    function f(c_id){
+    fetch('react/',{
+        method:'post',
+        headers:{
+            'X-CSRFToken': jQuery("input[name=csrfmiddlewaretoken]").val(),
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify({
+            id:c_id
+        })
+        }).then(response => {
+            return response.json()
+         }).then(data =>{
+            if(data=="0")
+                window.location.href = "/signin";
+            else
+                check()
+          }
+         )
+    }
+   </script>
+
+
+
+</body>
+
+</html>
