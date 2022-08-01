@@ -1,0 +1,143 @@
+body{
+    background:linear-gradient(120deg,rgb(234, 234, 236),rgb(247, 238, 215));
+
+}
+
+a{
+    position: relative;
+    top:3vh;
+    left:4vh;
+    text-decoration: none;
+    color: rgb(122, 121, 121);
+    font-family: 'Archivo';
+    font-size: larger;
+}
+
+body .head{
+    position:absolute;
+    align-self: center;
+    top:20vh;
+    left:13vw;
+    width:20vw;
+    color: brown;
+    height: 30vh;
+
+}
+
+.head h1{
+    position: relative;
+    font-size: 8em;
+    font-family: 'Aleo';
+    text-shadow: 0 0 #a09f9f;
+    
+}
+
+.head h1:hover{
+    text-shadow: 0 0 3px #dadada , 0 0 5px #af2732;
+    transition: .5s;
+}
+
+.head label{
+    position: relative;
+    top:45%;
+    font-family: 'Montserrat';
+    font-size: 1.5em;
+
+
+}
+
+
+.container{
+    align-self: center;
+    position: absolute;
+    top: 30vh;
+    left:102vh;
+    width:40vw;
+    
+    
+   
+}
+
+.container h1{
+    text-align: center;
+}
+
+.container form{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+form .form-control{
+    position: relative;
+    margin:1vh 0;
+    width:100%;
+    padding:0 0 1vh 0;
+    border:none;
+    border-bottom: 2px solid #6C6C6C;
+    background: none;
+    outline: none;
+    font-family: 'Cascadia';
+}
+
+form .form-control:focus{
+    border-color: brown;
+    transition: .5s;
+
+}
+
+.form-control input{
+   
+    background:none;
+}
+
+
+.form-group {
+    margin-bottom: 40px;
+    outline: 0px;
+    
+}
+
+
+
+
+.form-control-label {
+    font-family:'Cascadia Mono';
+    font-size:1.2em;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: rgb(143, 140, 140);
+}
+
+.btn{
+    background: none;
+    padding: 2px 1px;
+    font-family: 'Cascadia';
+    color: brown;
+    font-weight: bold;
+    font-size: 1em;
+    width: 6vw;
+    height: 4vh;
+    border:2px solid;
+    border-radius: .7em;
+    border-color: brown;
+}
+
+.btn:hover{
+    background: brown;
+    color: white;
+    transition: .6s;
+}
+
+.register a {
+    position: relative;
+    left:6%;
+    font-size: medium;
+    font-family: 'Cascadia Mono';
+}
+
+.register a:hover{
+    color: brown;
+}
